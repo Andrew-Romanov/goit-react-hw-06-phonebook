@@ -1,0 +1,11 @@
+.ContactList {
+  display: flex;
+  flex-direction: column;
+
+  &__Item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 44px;
+  }
+}

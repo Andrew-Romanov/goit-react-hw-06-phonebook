@@ -1,0 +1,28 @@
+.ContactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 8px 50px;
+
+  &__Button {
+    height: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 0px;
+    outline: 0px;
+    font: inherit;
+    font-size: inherit;
+    text-transform: capitalize;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: darkslategray;
+    }
+  }
+}
