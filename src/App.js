@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { useState, useEffect, useRef } from 'react';
+// import { v4 as uuidv4 } from 'uuid';
 import MainContainer from './components/MainContainer';
 import PageHeader from './components/PageHeader';
 import Section from './components/Section';
@@ -9,59 +9,61 @@ import ContactList from './components/ContactList';
 import Filter from './components/Filter';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  // const [contacts, setContacts] = useState([]);
   // const [contacts, setContacts] = useState(initialContacts);
-  const [filter, setFilter] = useState('');
-  const isFirstRender = useRef(true);
+  // const [filter, setFilter] = useState('');
+  // const isFirstRender = useRef(true);
 
-  useEffect(() => {
-    const contactsData = JSON.parse(localStorage.getItem('contacts'));
-    if (contactsData) setContacts(contactsData);
-  }, []);
+  // useEffect(() => {
+  //   const contactsData = JSON.parse(localStorage.getItem('contacts'));
+  //   if (contactsData) setContacts(contactsData);
+  // }, []);
 
-  useEffect(() => {
-    if (isFirstRender.current === true) {
-      isFirstRender.current = false;
-      return;
-    }
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   if (isFirstRender.current === true) {
+  //     isFirstRender.current = false;
+  //     return;
+  //   }
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const handleFilter = event => {
-    setFilter(event.target.value);
-  };
+  // const handleFilter = event => {
+  //   setFilter(event.target.value);
+  // };
 
-  const whenSubmit = ({ name, number }) => {
-    if (contacts.some(contact => contact.name === name))
-      return alert(`${name} is already in contacts`);
+  // const whenSubmit = ({ name, number }) => {
+  //   if (contacts.some(contact => contact.name === name))
+  //     return alert(`${name} is already in contacts`);
 
-    setContacts(prevContacts => [
-      ...prevContacts,
-      { id: uuidv4(), name, number },
-    ]);
-  };
+  //   setContacts(prevContacts => [
+  //     ...prevContacts,
+  //     { id: uuidv4(), name, number },
+  //   ]);
+  // };
 
-  const whenDelete = idToDelete => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== idToDelete),
-    );
-  };
+  // const whenDelete = idToDelete => {
+  //   setContacts(prevContacts =>
+  //     prevContacts.filter(contact => contact.id !== idToDelete),
+  //   );
+  // };
 
   return (
     <MainContainer>
       <PageHeader title="React Homework 04. Phonebook" />
 
       <Section title="Add Contact">
-        <ContactForm whenSubmit={whenSubmit} />
+        {/* <ContactForm whenSubmit={whenSubmit} /> */}
+        <ContactForm />
       </Section>
 
       <Section title="Contacts">
-        <Filter filterValue={filter} whenChange={handleFilter} />
+        {/* <Filter filterValue={filter} whenChange={handleFilter} /> */}
+        <Filter />
         <br />
         <ContactList
-          contacts={contacts}
-          filter={filter}
-          whenDelete={whenDelete}
+        // contacts={contacts}
+        // filter={filter}
+        // whenDelete={whenDelete}
         />
       </Section>
     </MainContainer>

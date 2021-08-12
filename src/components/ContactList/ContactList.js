@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 import ContactListElement from './ContactListElement';
+import { removeContact } from '../../redux/actions';
 import styles from './ContactList.module.scss';
 
-const ContactList = ({ contacts, filter, whenDelete }) => {
+const ContactList = ({ contacts, filterValue, whenDelete }) => {
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase()),
+    contact.name.toLowerCase().includes(filterValue.toLowerCase()),
   );
 
   return (
@@ -22,10 +24,19 @@ const ContactList = ({ contacts, filter, whenDelete }) => {
   );
 };
 
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  filter: PropTypes.string.isRequired,
-  whenDelete: PropTypes.func.isRequired,
-};
+// ContactList.propTypes = {
+//   contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+//   filterValue: PropTypes.string.isRequired,
+//   whenDelete: PropTypes.func.isRequired,
+// };
 
-export default ContactList;
+const mapStateToProps = state => ({
+  filterValue: state.contacts.filter,
+  contacts: state.contacts.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  whenDelete: id => dispatch(removeContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
