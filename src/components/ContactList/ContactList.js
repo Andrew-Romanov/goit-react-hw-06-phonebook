@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
 import ContactListElement from './ContactListElement';
-import { removeContact } from '../../redux/actions';
+import { removeContact } from '../../redux/contacts/contacts-actions';
 import styles from './ContactList.module.scss';
 
 const ContactList = ({ contacts, filterValue, whenDelete }) => {
@@ -23,12 +22,6 @@ const ContactList = ({ contacts, filterValue, whenDelete }) => {
     </ul>
   );
 };
-
-// ContactList.propTypes = {
-//   contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-//   filterValue: PropTypes.string.isRequired,
-//   whenDelete: PropTypes.func.isRequired,
-// };
 
 const mapStateToProps = state => ({
   filterValue: state.contacts.filter,

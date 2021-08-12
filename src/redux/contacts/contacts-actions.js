@@ -1,14 +1,16 @@
+import { ADD_CONTACT, REMOVE_CONTACT, CHANGE_FILTER } from './contacts-types';
+
 export const addContact = value => ({
-  type: 'phonebook/addContact',
+  type: ADD_CONTACT,
   payload: value,
 });
 
 export const removeContact = value => ({
-  type: 'phonebook/removeContact',
+  type: REMOVE_CONTACT,
   payload: value,
 });
 
 export const changeFilter = value => ({
-  type: 'phonebook/changeFilter',
+  type: CHANGE_FILTER,
   payload: value,
 });

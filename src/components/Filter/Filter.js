@@ -1,21 +1,11 @@
-// import { useState } from 'react';
 import { connect } from 'react-redux';
 import styles from './Filter.module.scss';
-// import PropTypes from 'prop-types';
-// import store from '../../redux/store';
-import { changeFilter } from '../../redux/actions';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
 
-// const Filter = ({ filterValue, whenChange }) => {
 const Filter = ({ filterValue, whenChangeFilter }) => {
-  // const [filterValue, setFilter] = useState('');
-
   const handleFilter = event => {
     whenChangeFilter(event.target.value);
-    // setFilter(event.target.value);
   };
-
-  // console.log(filterValue);
-  // console.log(store.getState());
 
   return (
     <label>
@@ -33,11 +23,6 @@ const Filter = ({ filterValue, whenChangeFilter }) => {
     </label>
   );
 };
-
-// Filter.propTypes = {
-//   filterValue: PropTypes.string.isRequired,
-//   whenChange: PropTypes.func.isRequired,
-// };
 
 const mapStateToProps = state => ({
   filterValue: state.contacts.filter,
