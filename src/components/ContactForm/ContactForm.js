@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import styles from './ContactForm.module.scss';
 import store from '../../redux/store';
 import { addContact } from '../../redux/contacts/contacts-actions';
 
-const ContactForm = ({ whenSubmit }) => {
+const ContactForm = () => {
   const [contact, setContact] = useState({ name: '', number: '' });
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -21,7 +21,8 @@ const ContactForm = ({ whenSubmit }) => {
     )
       return alert(`${contact.name} is already in contacts`);
 
-    whenSubmit(contact);
+    dispatch(addContact(contact));
+
     formReset();
   };
 
@@ -64,12 +65,4 @@ const ContactForm = ({ whenSubmit }) => {
   );
 };
 
-ContactForm.propTypes = {
-  whenSubmit: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = dispatch => ({
-  whenSubmit: contact => dispatch(addContact(contact)),
-});
-
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default ContactForm;

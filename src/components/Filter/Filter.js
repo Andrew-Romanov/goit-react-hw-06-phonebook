@@ -1,11 +1,10 @@
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './Filter.module.scss';
 import { changeFilter } from '../../redux/contacts/contacts-actions';
 
-const Filter = ({ filterValue, whenChangeFilter }) => {
-  const handleFilter = event => {
-    whenChangeFilter(event.target.value);
-  };
+const Filter = () => {
+  const filterValue = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
 
   return (
     <label>
@@ -18,18 +17,10 @@ const Filter = ({ filterValue, whenChangeFilter }) => {
         title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
         value={filterValue}
-        onChange={handleFilter}
+        onChange={event => dispatch(changeFilter(event.target.value))}
       />
     </label>
   );
 };
 
-const mapStateToProps = state => ({
-  filterValue: state.contacts.filter,
-});
-
-const mapDispatchToProps = dispatch => ({
-  whenChangeFilter: newFilterValue => dispatch(changeFilter(newFilterValue)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

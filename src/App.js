@@ -8,7 +8,7 @@ import Filter from './components/Filter';
 const App = () => {
   return (
     <MainContainer>
-      <PageHeader title="React Homework 04. Phonebook" />
+      <PageHeader title="React Homework 06. Phonebook" />
 
       <Section title="Add Contact">
         <ContactForm />
